@@ -70,7 +70,7 @@ defmodule PasswordGenerator do
 
 
   defp validate_length(true, options) do
-    numbers = Enum.map(0..9, & Integer.to_string(&1))
+    numbers = Enum.map(0..9, &Integer.to_string(&1))
     length = options["length"]
     length = String.contains?(length, numbers)
     validate_length_is_integer(length, options)
@@ -90,7 +90,6 @@ defmodule PasswordGenerator do
 
 
     validate_options_values_are_boolean(value, length, options_without_length)
-
   end
 
   defp validate_options_values_are_boolean(false, _length, _options) do
@@ -135,6 +134,11 @@ defmodule PasswordGenerator do
     options |> Enum.map(&get(&1))
   end
 
+  # Letters can be represented by the binary value
+  # example ?a = 97 and <<?a>> = "a"
+  # Enum.random takes a range of integers
+  # passing binary values you get all the letters of the alphabet
+  # Returns a letter string for the given option, false when not a valid option
   defp get(:lowercase_letter) do
     # get lowercase letters
     <<Enum.random(?a..?z)>>
@@ -173,6 +177,6 @@ defmodule PasswordGenerator do
     |> Enum.map(fn {key, _value} -> String.to_atom(key) end)
   end
 
-
+# end of functions
 
 end
