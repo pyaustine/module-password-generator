@@ -16,7 +16,7 @@ defmodule PasswordGenerator do
 
   """
 
-  @allowed_options [:lenght, :numbers, :uppercase, :symbols]
+  @allowed_options [:length, :numbers, :uppercase, :symbols]
 
   @doc """
   Generates password for given options
@@ -57,7 +57,6 @@ defmodule PasswordGenerator do
   """
   @spec generate(options :: map()) :: {:ok, bitstring()} | {:error, bitstring()}
   def generate(options) do
-    # do something
     # define variable and check if the map parsed has the key length
     length = Map.has_key?(options, "length")
     validate_length(length, options)
