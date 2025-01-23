@@ -121,23 +121,23 @@ defmodule PasswordGeneratorTest do
     refute String.contains?(result, options.symbols)
   end
 
-  # # test for numbers
-  # test "returns a string with numbers", %{options_type: options} do
-  #   options_with_numbers = %{
-  #     "length" => "10",
-  #     "numbers" => "true",
-  #     "uppercase" => "false",
-  #     "symbols" => "false"
-  #   }
+  # test for numbers
+  test "returns a string with numbers", %{options_type: options} do
+    options_with_numbers = %{
+      "length" => "10",
+      "numbers" => "true",
+      "uppercase" => "false",
+      "symbols" => "false"
+    }
 
-  #   {:ok, result} = PasswordGenerator.generate(options_with_numbers)
+    {:ok, result} = PasswordGenerator.generate(options_with_numbers)
 
-  #   assert String.contains?(result, options.numbers)
+    assert String.contains?(result, options.numbers)
 
-  #   refute String.contains?(result, options.uppercase)
-  #   refute String.contains?(result, options.symbols)
+    refute String.contains?(result, options.uppercase)
+    refute String.contains?(result, options.symbols)
 
-  # end
+  end
 
   # # test for uppercase and numbers
   # test "returns a string with uppercase and numbers", %{options_type: options} do
@@ -194,21 +194,21 @@ defmodule PasswordGeneratorTest do
 
 
   # test for numbers and symbols
-  test "returns a string with numbers and symbols", %{options_type: options} do
-    options_included = %{
-      "length" => "10",
-      "numbers" => "true",
-      "uppercase" => "false",
-      "symbols" => "true"
-    }
+  # test "returns a string with numbers and symbols", %{options_type: options} do
+  #   options_included = %{
+  #     "length" => "10",
+  #     "numbers" => "true",
+  #     "uppercase" => "false",
+  #     "symbols" => "true"
+  #   }
 
-    {:ok, result} = PasswordGenerator.generate(options_included)
+  #   {:ok, result} = PasswordGenerator.generate(options_included)
 
-    assert String.contains?(result, options.numbers)
-    assert String.contains?(result, options.symbols)
+  #   assert String.contains?(result, options.numbers)
+  #   assert String.contains?(result, options.symbols)
 
-    refute String.contains?(result, options.uppercase)
-  end
+  #   refute String.contains?(result, options.uppercase)
+  # end
 
   # # test for uppercase, numbers and symbols
   # test "returns a string with uppercase, numbers and symbols", %{options_type: options} do
